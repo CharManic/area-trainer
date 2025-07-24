@@ -389,7 +389,7 @@ class Trainer(tk.Tk):
             randArea = area
             # Loop is only broken when the random area is not already in the list.
             while randArea in areaAnswers:
-                randArea = random.randint(int(area * 0.5), int(area + area * 1.5))
+                randArea = random.randint(int(area * 0.5), int(area * 1.5))
             areaAnswers.append(randArea)
 
         random.shuffle(areaAnswers)
