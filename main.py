@@ -444,13 +444,13 @@ class Trainer(tk.Tk):
 
         # Chosen answer is correct.
         else:
-            # +1 score if done in 2 attempts.
-            if questionDone:
-                self.score += 1
-
             # +2 score if done in 1 attempt.
-            else:
+            if self.attempts == 0:
                 self.score += 2
+
+            # +1 score if done in 2 attempts.
+            else:
+                self.score += 1
             label.config(text=f"Correct! The answer was {answer}. Score: {self.score}")
 
             questionDone = True
