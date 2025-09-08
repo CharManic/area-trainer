@@ -1,4 +1,4 @@
-# Summer work completed. 🎉🎉
+# Area Trainer (Charlie)
 
 # Imports
 import tkinter as tk
