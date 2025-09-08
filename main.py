@@ -580,6 +580,6 @@ class Trainer(tk.Tk):
 # Main Program
 
 # Initialises object and starts trainer.
-root = Trainer()
-root.loginMenu()
-root.mainloop()
+ROOT = Trainer()
+ROOT.loginMenu()
+ROOT.mainloop()
