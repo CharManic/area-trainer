@@ -8,7 +8,7 @@ from ctypes import windll
 
 # -------------------------------------
 
-# Makes text and other widgets look less ugly.
+# Make text and other widgets look less ugly.
 windll.shcore.SetProcessDpiAwareness(1)
 
 
@@ -113,24 +113,24 @@ class Trainer(tk.Tk):
     def centreWindow(self):
         """Centres Trainer window."""
 
-        # Finds screen dimensions.
+        # Find screen dimensions.
         screenHeight = self.winfo_screenheight()
         screenWidth = self.winfo_screenwidth()
 
-        # Repositions window.
+        # Reposition window.
         self.geometry(f"500x500+{(screenWidth - 500) // 2}+{(screenHeight - 500) // 2}")
         self.update_idletasks()
 
     def focusIn(self, _, isUsername):
         """Allows for default text to be removed when entry is selected. Will not change if the entry holds an input."""
 
-        # Checks whether the entry is usernameEntry or passwordEntry.
+        # Check whether the entry is usernameEntry or passwordEntry.
         if isUsername:
             entry = self.usernameEntry
         else:
             entry = self.passwordEntry
 
-        # Checks to see whether the user has inputted anything.
+        # Check to see whether the user has inputted anything.
         if entry["fg"] == "grey":
             entry.delete(0, tk.END)
             entry.config(fg="black")
@@ -139,7 +139,7 @@ class Trainer(tk.Tk):
         """Allows for default text to be displayed when entry is not selected. Will not change if the entry holds an
         input."""
 
-        # Checks whether the entry is usernameEntry or passwordEntry.
+        # Check whether the entry is usernameEntry or passwordEntry.
         if isUsername:
             entry = self.usernameEntry
             text = "Username"
@@ -147,7 +147,7 @@ class Trainer(tk.Tk):
             entry = self.passwordEntry
             text = "Password"
 
-        # Checks to see whether the user has inputted anything.
+        # Check to see whether the user has inputted anything.
         if not entry.get():
             entry.delete(0, tk.END)
             entry.config(fg="grey")
@@ -258,7 +258,7 @@ class Trainer(tk.Tk):
 
         self.score = 0
 
-        # Unpack everything from previous interface
+        # Unpack everything from previous interface.
         for widget in self.mainFrame.winfo_children():
             widget.pack_forget()
 
@@ -331,7 +331,7 @@ class Trainer(tk.Tk):
         for widget in self.mainFrame.winfo_children():
             widget.pack_forget()
 
-        # Calculation variables
+        # Calculation Variables
         area = 0
         height = 0
         base2 = 0
@@ -473,19 +473,21 @@ class Trainer(tk.Tk):
         """Checks inputted information against that in the accounts.txt file to determine if the user can access
         their account."""
 
-        # Retrieve username and password
+        # Retrieve username and password.
         self.username = self.usernameEntry.get()
         self.password = self.passwordEntry.get()
         try:
             file = open("accounts.txt", "r")
             loggedIn = False
             for line in file:
-                # Lines in accounts.txt are formatted as "username,password,score1,score2,score3 [and so on]".
-                # Retrieves username from line.
-
+                # Lines in accounts.txt are formatted as "username,password,score1,score2,score3 (and so on)".
+                
+                # Retrieve username from line.
                 retrievedUsername = line[0:line.index(",")]
+                
                 # Retrieve password by first removing the username section, and then removing the scores.
-                retrievedPassword = line[line.index(",") + 1:][:line[line.index(",") + 1:].index(",")]
+                retrievedPassword = line[line.index(",") + 1:] [:line [line.index(",") + 1:] .index(",")]
+                
                 # Authenticate user.
                 if self.username == retrievedUsername:
                     if self.password == retrievedPassword:
@@ -579,7 +581,7 @@ class Trainer(tk.Tk):
 
 # Main Program
 
-# Initialises object and starts trainer.
+# Initialise object and starts trainer.
 ROOT = Trainer()
 ROOT.loginMenu()
 ROOT.mainloop()
